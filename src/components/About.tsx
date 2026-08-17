@@ -5,23 +5,23 @@ import { Award, Leaf, Heart, Clock } from 'lucide-react';
 const values = [
   {
     icon: Award,
-    title: 'Award-Winning Craft',
-    desc: '18 international awards for excellence in patisserie, recognised by France\'s Institut Culinaire.',
+    title: 'Мастерство, отмеченное наградами',
+    desc: '18 международных наград за мастерство в кондитерском искусстве, признанных Кулинарным институтом Франции.',
   },
   {
     icon: Leaf,
-    title: 'Finest Ingredients',
-    desc: 'We source organic flour, single-origin chocolate, and fresh seasonal produce every morning.',
+    title: 'Лучшие ингредиенты',
+    desc: 'Мы используем органическую муку, шоколад из одного региона и свежие сезонные продукты каждое утро.',
   },
   {
     icon: Heart,
-    title: 'Made with Love',
-    desc: 'Every dessert is handcrafted in small batches to ensure unrivalled quality and consistency.',
+    title: 'Сделано с любовью',
+    desc: 'Каждый десерт готовится вручную небольшими партиями, чтобы гарантировать безупречное качество и стабильность.',
   },
   {
     icon: Clock,
-    title: 'Same-Day Delivery',
-    desc: 'Order before noon and receive your artisan desserts fresh at your door the same afternoon.',
+    title: 'Доставка в день заказа',
+    desc: 'Закажите до полудня, и ваши десерты ручной работы будут доставлены свежими к двери в тот же день.',
   },
 ];
 
@@ -45,21 +45,21 @@ export default function About() {
             }`}
           >
             <span className="inline-block font-['Dancing_Script'] text-rose-500 text-2xl mb-3">
-              Our Story
+              Наша история
             </span>
             <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-stone-900 leading-tight mb-6">
-              Passion Baked Into
-              <em className="block text-rose-700 not-italic"> Every Creation</em>
+              Страсть, запечённая
+              <em className="block text-rose-700 not-italic"> в каждом десерте</em>
             </h2>
             <p className="font-['Inter'] text-stone-600 leading-relaxed mb-5 text-base">
-              Founded in 2012 by head pastry chef <strong className="text-stone-800">Isabelle Moreau</strong>, Unique Desserts
-              was born from a simple belief: that truly extraordinary sweets should be accessible to everyone.
-              What began as a small Parisian-inspired atelier has grown into an award-winning patisserie
-              celebrated across the country.
+              Основанная в 2012 году шеф-кондитером <strong className="text-stone-800">Изабель Моро</strong>, компания Unique Desserts
+              родилась из простой веры: по-настоящему исключительные сладости должны быть доступны каждому.
+              То, что начиналось как небольшая мастерская в парижском стиле, превратилось в отмеченную наградами кондитерскую,
+              известную по всей стране.
             </p>
             <p className="font-['Inter'] text-stone-600 leading-relaxed mb-8 text-base">
-              Each morning our team arrives before dawn to prepare fresh doughs, temper finest-grade chocolate
-              and pipe exquisitely delicate creams. We never rush, and we never compromise.
+              Каждое утро наша команда приходит до рассвета, чтобы приготовить свежее тесто, темперировать шоколад высшего сорта
+              и отсадить изысканно нежные кремы. Мы никогда не торопимся и никогда не идём на компромиссы.
             </p>
 
             {/* Values grid */}
@@ -92,7 +92,7 @@ export default function About() {
             <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl shadow-rose-200/40">
               <img
                 src="https://images.pexels.com/photos/19499006/pexels-photo-19499006.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=700"
-                alt="Artisan cakes close-up"
+                alt="Авторские торты крупным планом"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -102,20 +102,20 @@ export default function About() {
             {/* Floating badge */}
             <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-xl border border-rose-50">
               <div className="font-['Dancing_Script'] text-3xl font-bold text-rose-700 leading-none">12+</div>
-              <div className="font-['Inter'] text-xs text-stone-500 uppercase tracking-widest mt-1">Years of Craft</div>
+              <div className="font-['Inter'] text-xs text-stone-500 uppercase tracking-widest mt-1">Лет мастерства</div>
             </div>
 
             {/* Floating award badge */}
             <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-rose-700 flex flex-col items-center justify-center shadow-lg shadow-rose-300/40">
               <Award size={18} className="text-white mb-0.5" />
-              <span className="font-['Playfair_Display'] text-white text-[10px] font-bold text-center leading-tight">18 Awards</span>
+              <span className="font-['Playfair_Display'] text-white text-[10px] font-bold text-center leading-tight">18 наград</span>
             </div>
 
             {/* Secondary image */}
             <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-2xl overflow-hidden shadow-xl border-2 border-white hidden sm:block">
               <img
                 src="https://images.pexels.com/photos/12927171/pexels-photo-12927171.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=200"
-                alt="Blue velvet desserts"
+                alt="Синие бархатные десерты"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
