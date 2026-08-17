@@ -25,20 +25,20 @@ const socialLinks = [
 ];
 
 const footerLinks = {
-  'Quick Links': navLinks.map((l) => ({ label: l.label, href: l.href })),
-  'Our Specialities': [
-    { label: 'Wedding Cakes', href: '#menu' },
-    { label: 'Seasonal Macarons', href: '#menu' },
-    { label: 'Artisan Chocolates', href: '#menu' },
-    { label: 'Corporate Events', href: '#contact' },
-    { label: 'Custom Orders', href: '#contact' },
+  'Быстрые ссылки': navLinks.map((l) => ({ label: l.label, href: l.href })),
+  'Наши специализации': [
+    { label: 'Свадебные торты', href: '#menu' },
+    { label: 'Сезонные макаруны', href: '#menu' },
+    { label: 'Авторский шоколад', href: '#menu' },
+    { label: 'Корпоративные мероприятия', href: '#contact' },
+    { label: 'Индивидуальные заказы', href: '#contact' },
   ],
-  'Information': [
-    { label: 'Allergen Info', href: '#' },
-    { label: 'Delivery Policy', href: '#' },
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
-    { label: 'FAQs', href: '#' },
+  'Информация': [
+    { label: 'Информация об аллергенах', href: '#' },
+    { label: 'Условия доставки', href: '#' },
+    { label: 'Политика конфиденциальности', href: '#' },
+    { label: 'Условия использования', href: '#' },
+    { label: 'Частые вопросы', href: '#' },
   ],
 };
 
@@ -57,7 +57,7 @@ export default function Footer() {
         <div className="absolute inset-0">
           <img
             src="https://images.pexels.com/photos/17869890/pexels-photo-17869890.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=400&w=1400"
-            alt="Desserts background"
+            alt="Фон с десертами"
             className="w-full h-full object-cover"
             loading="lazy"
           />
@@ -65,14 +65,14 @@ export default function Footer() {
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-20 text-center">
           <span className="inline-block font-['Dancing_Script'] text-rose-300 text-3xl mb-4">
-            A Sweet Invitation
+            Сладкое приглашение
           </span>
           <h3 className="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Indulge?
+            Готовы побаловать себя?
           </h3>
           <p className="font-['Inter'] text-rose-200/70 mb-8 max-w-md mx-auto">
-            Join over 50,000 happy customers who receive our freshly crafted desserts.
-            Subscribe for exclusive offers and new flavour alerts.
+            Присоединяйтесь к 50 000 довольных клиентов, которые получают наши свежие десерты.
+            Подпишитесь на эксклюзивные предложения и уведомления о новинках.
           </p>
           <form
             onSubmit={(e) => {
@@ -84,7 +84,7 @@ export default function Footer() {
           >
             <input
               type="email"
-              placeholder="your@email.com"
+              placeholder="ваш@email.ru"
               required
               className="flex-1 px-5 py-3.5 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/40 font-['Inter'] text-sm focus:outline-none focus:border-rose-400 focus:bg-white/15 transition-all duration-200"
             />
@@ -92,27 +92,27 @@ export default function Footer() {
               type="submit"
               className="px-7 py-3.5 bg-rose-500 hover:bg-rose-400 text-white rounded-full font-['Inter'] font-semibold text-sm transition-colors duration-300 whitespace-nowrap cursor-pointer shadow-lg shadow-rose-900/50"
             >
-              Subscribe
+              Подписаться
             </button>
           </form>
         </div>
       </div>
 
-      {/* Main footer grid */}
+      {/* Основная сетка футера */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
-          {/* Brand */}
+          {/* Бренд */}
           <div className="lg:col-span-2">
             <div className="mb-5">
-              <span className="font-['Dancing_Script'] text-3xl font-bold text-white block leading-none">Unique</span>
-              <span className="font-['Playfair_Display'] text-xs uppercase tracking-[0.3em] text-rose-400">Desserts</span>
+              <span className="font-['Dancing_Script'] text-3xl font-bold text-white block leading-none">Уникальные</span>
+              <span className="font-['Playfair_Display'] text-xs uppercase tracking-[0.3em] text-rose-400">Десерты</span>
             </div>
             <p className="font-['Inter'] text-sm leading-relaxed mb-6 max-w-xs">
-              An award-winning artisan patisserie in the heart of London. We craft unforgettable desserts
-              with passion, precision, and the world's finest ingredients.
+              Отмеченная наградами кондитерская в самом сердце Лондона. Мы создаём незабываемые десерты
+              со страстью, точностью и из лучших ингредиентов мира.
             </p>
-            {/* Social icons */}
+            {/* Социальные иконки */}
             <div className="flex gap-3">
               {socialLinks.map(({ label, href, svgPath }) => (
                 <a
@@ -129,7 +129,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link columns */}
+          {/* Колонки ссылок */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h4 className="font-['Inter'] text-xs font-semibold uppercase tracking-widest text-white mb-5">
@@ -151,13 +151,13 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
+        {/* Нижняя полоса */}
         <div className="border-t border-white/5 mt-14 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-['Inter'] text-xs text-stone-600">
-            © {new Date().getFullYear()} Unique Desserts Ltd. All rights reserved.
+            © {new Date().getFullYear()} Уникальные десерты. Все права защищены.
           </p>
           <p className="font-['Inter'] text-xs text-stone-600 flex items-center gap-1.5">
-            Made with <Heart size={11} className="fill-rose-600 text-rose-600 mx-0.5" /> in London
+            Сделано с <Heart size={11} className="fill-rose-600 text-rose-600 mx-0.5" /> в Лондоне
           </p>
         </div>
       </div>
