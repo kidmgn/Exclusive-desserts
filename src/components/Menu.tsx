@@ -11,7 +11,7 @@ function DessertCard({ dessert, index }: { dessert: typeof desserts[0]; index: n
 
   const handleAdd = () => {
     addItem(dessert);
-    toast.success(`${dessert.name} added to cart!`, {
+    toast.success(`${dessert.name} добавлен в корзину!`, {
       icon: '🍰',
       style: {
         fontFamily: 'Inter, sans-serif',
@@ -44,9 +44,9 @@ function DessertCard({ dessert, index }: { dessert: typeof desserts[0]; index: n
         {dessert.badge && (
           <span
             className={`absolute top-3 left-3 px-3 py-1 text-[11px] font-['Inter'] font-semibold rounded-full uppercase tracking-wide ${
-              dessert.badge === 'New'
+              dessert.badge === 'Новинка'
                 ? 'bg-emerald-500 text-white'
-                : dessert.badge === 'Bestseller'
+                : dessert.badge === 'Хит продаж'
                 ? 'bg-amber-400 text-amber-900'
                 : 'bg-rose-600 text-white'
             }`}
@@ -59,7 +59,7 @@ function DessertCard({ dessert, index }: { dessert: typeof desserts[0]; index: n
         <button
           onClick={handleAdd}
           className="absolute bottom-3 right-3 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-rose-600 hover:bg-rose-600 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 cursor-pointer"
-          aria-label={`Add ${dessert.name} to cart`}
+          aria-label={`Добавить ${dessert.name} в корзину`}
         >
           <Plus size={18} />
         </button>
@@ -95,7 +95,7 @@ function DessertCard({ dessert, index }: { dessert: typeof desserts[0]; index: n
         <div className="flex items-center justify-between">
           <div>
             <span className="font-['Playfair_Display'] text-2xl font-bold text-stone-900">
-              £{dessert.price.toFixed(2)}
+              ₽{dessert.price.toFixed(2)}
             </span>
           </div>
           <button
@@ -103,7 +103,7 @@ function DessertCard({ dessert, index }: { dessert: typeof desserts[0]; index: n
             className="flex items-center gap-2 px-4 py-2 bg-rose-50 hover:bg-rose-700 text-rose-700 hover:text-white rounded-full font-['Inter'] text-sm font-semibold transition-all duration-300 cursor-pointer group/btn"
           >
             <ShoppingBag size={14} className="group-hover/btn:scale-110 transition-transform" />
-            Add to Cart
+            В корзину
           </button>
         </div>
       </div>
@@ -131,13 +131,13 @@ export default function Menu() {
           }`}
         >
           <span className="inline-block font-['Dancing_Script'] text-rose-500 text-2xl mb-3">
-            Our Menu
+            Наше меню
           </span>
           <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-stone-900 mb-4">
-            Crafted with Devotion
+            Создано с любовью
           </h2>
           <p className="font-['Inter'] text-stone-500 max-w-lg mx-auto leading-relaxed">
-            Browse our seasonal collection — each piece a labour of love, made fresh daily in our atelier.
+            Ознакомьтесь с нашей сезонной коллекцией — каждое изделие сделано с любовью и свежее каждый день.
           </p>
         </div>
 
@@ -168,13 +168,13 @@ export default function Menu() {
         {/* Bottom CTA */}
         <div className="text-center mt-14">
           <p className="font-['Inter'] text-stone-500 mb-4 text-sm">
-            Looking for something bespoke? We create custom orders for weddings, birthdays and events.
+            Ищете что-то особенное? Мы создаём индивидуальные заказы для свадеб, дней рождений и мероприятий.
           </p>
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-rose-700 text-rose-700 hover:bg-rose-700 hover:text-white rounded-full font-['Inter'] font-semibold text-sm transition-all duration-300 cursor-pointer"
           >
-            Enquire About Custom Orders
+            Заказать индивидуально
           </button>
         </div>
       </div>
