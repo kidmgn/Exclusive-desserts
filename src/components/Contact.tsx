@@ -6,23 +6,23 @@ import toast from 'react-hot-toast';
 const contactDetails = [
   {
     icon: MapPin,
-    title: 'Visit Us',
-    lines: ['14 Blossom Lane, Mayfair', 'London, W1K 3BN'],
+    title: 'Навестите нас',
+    lines: ['Лондон, Мейфэр', 'Блоссом Лейн, 14'],
   },
   {
     icon: Phone,
-    title: 'Call Us',
-    lines: ['+44 (0)20 7946 0321', 'Mon–Sat, 9am–6pm'],
+    title: 'Позвоните нам',
+    lines: ['+44 (0)20 7946 0321', 'Пн–Сб, 9:00–18:00'],
   },
   {
     icon: Mail,
-    title: 'Email Us',
-    lines: ['hello@uniquedesserts.co.uk', 'We reply within 24 hours'],
+    title: 'Напишите нам',
+    lines: ['hello@uniquedesserts.co.uk', 'Отвечаем в течение 24 часов'],
   },
   {
     icon: Clock,
-    title: 'Opening Hours',
-    lines: ['Mon–Fri: 8am–7pm', 'Sat–Sun: 9am–5pm'],
+    title: 'Часы работы',
+    lines: ['Пн–Пт: 8:00–19:00', 'Сб–Вс: 9:00–17:00'],
   },
 ];
 
@@ -44,15 +44,15 @@ export default function Contact() {
 
   const validate = (): boolean => {
     const newErrors: Partial<FormState> = {};
-    if (!form.name.trim()) newErrors.name = 'Name is required';
+    if (!form.name.trim()) newErrors.name = 'Укажите имя';
     if (!form.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = 'Укажите email';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = 'Введите корректный email';
     }
-    if (!form.subject.trim()) newErrors.subject = 'Subject is required';
-    if (!form.message.trim()) newErrors.message = 'Message is required';
-    else if (form.message.trim().length < 20) newErrors.message = 'Message must be at least 20 characters';
+    if (!form.subject.trim()) newErrors.subject = 'Укажите тему';
+    if (!form.message.trim()) newErrors.message = 'Введите сообщение';
+    else if (form.message.trim().length < 20) newErrors.message = 'Сообщение должно содержать не менее 20 символов';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -69,11 +69,11 @@ export default function Contact() {
     e.preventDefault();
     if (!validate()) return;
     setLoading(true);
-    // Simulate API call
+    // Имитация API-запроса
     await new Promise((r) => setTimeout(r, 1500));
     setLoading(false);
     setSubmitted(true);
-    toast.success('Message sent! We\'ll be in touch soon.', {
+    toast.success('Сообщение отправлено! Мы скоро свяжемся с вами.', {
       style: { fontFamily: 'Inter, sans-serif', borderRadius: '12px' },
     });
   };
@@ -85,13 +85,13 @@ export default function Contact() {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-block font-['Dancing_Script'] text-rose-500 text-2xl mb-3">
-            Get in Touch
+            Свяжитесь с нами
           </span>
           <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-stone-900 mb-4">
-            We'd Love to Hear from You
+            Будем рады вас услышать
           </h2>
           <p className="font-['Inter'] text-stone-500 max-w-md mx-auto">
-            Whether you're planning a special event or simply want to enquire about our menu, we're here.
+            Планируете особенное событие или просто хотите узнать о нашем меню — мы всегда на связи.
           </p>
         </div>
 
@@ -129,8 +129,8 @@ export default function Contact() {
                   <MapPin size={24} className="text-rose-600" />
                 </div>
                 <div className="text-center">
-                  <p className="font-['Playfair_Display'] text-stone-700 font-semibold">14 Blossom Lane</p>
-                  <p className="font-['Inter'] text-stone-500 text-sm">Mayfair, London W1K 3BN</p>
+                  <p className="font-['Playfair_Display'] text-stone-700 font-semibold">Блоссом Лейн, 14</p>
+                  <p className="font-['Inter'] text-stone-500 text-sm">Мейфэр, Лондон W1K 3BN</p>
                 </div>
                 <a
                   href="https://maps.google.com"
@@ -138,7 +138,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="mt-2 px-5 py-2 bg-rose-700 text-white rounded-full font-['Inter'] text-xs font-semibold hover:bg-rose-800 transition-colors cursor-pointer"
                 >
-                  Open in Google Maps
+                  Открыть в Google Картах
                 </a>
               </div>
             </div>
@@ -157,16 +157,16 @@ export default function Contact() {
                   <CheckCircle size={40} className="text-emerald-500" />
                 </div>
                 <h3 className="font-['Playfair_Display'] text-2xl font-bold text-stone-900 mb-3">
-                  Message Received!
+                  Сообщение получено!
                 </h3>
                 <p className="font-['Inter'] text-stone-500 max-w-sm">
-                  Thank you for reaching out, {form.name.split(' ')[0]}. Our team will get back to you within 24 hours.
+                  Спасибо, что обратились к нам, {form.name.split(' ')[0]}. Наша команда ответит вам в течение 24 часов.
                 </p>
                 <button
                   onClick={() => { setSubmitted(false); setForm({ name: '', email: '', subject: '', message: '' }); }}
                   className="mt-6 px-6 py-2.5 border-2 border-rose-300 text-rose-700 rounded-full font-['Inter'] text-sm font-semibold hover:bg-rose-50 transition-colors cursor-pointer"
                 >
-                  Send Another Message
+                  Отправить ещё одно сообщение
                 </button>
               </div>
             ) : (
@@ -175,7 +175,7 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block font-['Inter'] text-xs font-semibold text-stone-600 uppercase tracking-widest mb-1.5">
-                      Full Name *
+                      Полное имя *
                     </label>
                     <input
                       id="name"
@@ -183,7 +183,7 @@ export default function Contact() {
                       type="text"
                       value={form.name}
                       onChange={handleChange}
-                      placeholder="Jane Smith"
+                      placeholder="Иван Петров"
                       className={`w-full px-4 py-3 rounded-xl border font-['Inter'] text-sm text-stone-800 placeholder-stone-300 bg-stone-50 focus:bg-white transition-all duration-200 outline-none focus:ring-2 ${
                         errors.name
                           ? 'border-red-300 focus:ring-red-100'
@@ -196,7 +196,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label htmlFor="email" className="block font-['Inter'] text-xs font-semibold text-stone-600 uppercase tracking-widest mb-1.5">
-                      Email Address *
+                      Email адрес *
                     </label>
                     <input
                       id="email"
@@ -204,7 +204,7 @@ export default function Contact() {
                       type="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="jane@example.com"
+                      placeholder="ivan@example.com"
                       className={`w-full px-4 py-3 rounded-xl border font-['Inter'] text-sm text-stone-800 placeholder-stone-300 bg-stone-50 focus:bg-white transition-all duration-200 outline-none focus:ring-2 ${
                         errors.email
                           ? 'border-red-300 focus:ring-red-100'
@@ -220,7 +220,7 @@ export default function Contact() {
                 {/* Subject */}
                 <div>
                   <label htmlFor="subject" className="block font-['Inter'] text-xs font-semibold text-stone-600 uppercase tracking-widest mb-1.5">
-                    Subject *
+                    Тема *
                   </label>
                   <select
                     id="subject"
@@ -233,13 +233,13 @@ export default function Contact() {
                         : 'border-stone-200 focus:border-rose-400 focus:ring-rose-100'
                     }`}
                   >
-                    <option value="">Select a subject…</option>
-                    <option value="general">General Enquiry</option>
-                    <option value="custom-order">Custom Order</option>
-                    <option value="wedding">Wedding Cake</option>
-                    <option value="corporate">Corporate Event</option>
-                    <option value="delivery">Delivery Query</option>
-                    <option value="feedback">Feedback</option>
+                    <option value="">Выберите тему…</option>
+                    <option value="general">Общий вопрос</option>
+                    <option value="custom-order">Индивидуальный заказ</option>
+                    <option value="wedding">Свадебный торт</option>
+                    <option value="corporate">Корпоративное мероприятие</option>
+                    <option value="delivery">Вопрос по доставке</option>
+                    <option value="feedback">Отзыв</option>
                   </select>
                   {errors.subject && (
                     <p className="font-['Inter'] text-red-500 text-xs mt-1">{errors.subject}</p>
@@ -249,7 +249,7 @@ export default function Contact() {
                 {/* Message */}
                 <div>
                   <label htmlFor="message" className="block font-['Inter'] text-xs font-semibold text-stone-600 uppercase tracking-widest mb-1.5">
-                    Message *
+                    Сообщение *
                   </label>
                   <textarea
                     id="message"
@@ -257,7 +257,7 @@ export default function Contact() {
                     rows={5}
                     value={form.message}
                     onChange={handleChange}
-                    placeholder="Tell us about your enquiry…"
+                    placeholder="Расскажите о вашем запросе…"
                     className={`w-full px-4 py-3 rounded-xl border font-['Inter'] text-sm text-stone-800 placeholder-stone-300 bg-stone-50 focus:bg-white transition-all duration-200 outline-none focus:ring-2 resize-none ${
                       errors.message
                         ? 'border-red-300 focus:ring-red-100'
@@ -283,12 +283,12 @@ export default function Contact() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                       </svg>
-                      Sending…
+                      Отправка…
                     </>
                   ) : (
                     <>
                       <Send size={16} />
-                      Send Message
+                      Отправить сообщение
                     </>
                   )}
                 </button>
