@@ -6,7 +6,7 @@ export default function Cart() {
   const { isOpen, closeCart, items, removeItem, updateQuantity, clearCart, totalPrice, totalItems } = useCart();
 
   const handleCheckout = () => {
-    toast.success('Thank you for your order! We\'ll confirm shortly.', {
+    toast.success('Спасибо за ваш заказ! Мы скоро свяжемся с вами для подтверждения.', {
       icon: '🎉',
       duration: 4000,
       style: {
@@ -39,25 +39,25 @@ export default function Cart() {
         }`}
         role="dialog"
         aria-modal="true"
-        aria-label="Shopping cart"
+        aria-label="Корзина покупок"
       >
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-stone-100">
           <div className="flex items-center gap-3">
             <ShoppingBag size={20} className="text-rose-600" />
             <h2 className="font-['Playfair_Display'] text-lg font-semibold text-stone-900">
-              Your Cart
+              Ваша корзина
             </h2>
             {totalItems > 0 && (
               <span className="px-2.5 py-0.5 bg-rose-100 text-rose-700 rounded-full font-['Inter'] text-xs font-semibold">
-                {totalItems} {totalItems === 1 ? 'item' : 'items'}
+                {totalItems} {totalItems === 1 ? 'товар' : totalItems >= 2 && totalItems <= 4 ? 'товара' : 'товаров'}
               </span>
             )}
           </div>
           <button
             onClick={closeCart}
             className="p-2 text-stone-400 hover:text-stone-700 hover:bg-stone-100 rounded-full transition-colors duration-200 cursor-pointer"
-            aria-label="Close cart"
+            aria-label="Закрыть корзину"
           >
             <X size={18} />
           </button>
@@ -71,10 +71,10 @@ export default function Cart() {
                 <ShoppingBag size={32} className="text-rose-300" />
               </div>
               <h3 className="font-['Playfair_Display'] text-lg font-semibold text-stone-700 mb-2">
-                Your cart is empty
+                Ваша корзина пуста
               </h3>
               <p className="font-['Inter'] text-stone-400 text-sm max-w-[200px]">
-                Add some delicious desserts to get started!
+                Добавьте вкусные десерты, чтобы начать!
               </p>
               <button
                 onClick={() => {
@@ -83,7 +83,7 @@ export default function Cart() {
                 }}
                 className="mt-6 flex items-center gap-2 px-5 py-2.5 bg-rose-700 text-white rounded-full font-['Inter'] text-sm font-semibold hover:bg-rose-800 transition-colors cursor-pointer"
               >
-                Browse Menu
+                Перейти в меню
                 <ArrowRight size={14} />
               </button>
             </div>
@@ -110,7 +110,7 @@ export default function Cart() {
                       {item.dessert.name}
                     </h4>
                     <p className="font-['Inter'] text-rose-600 text-sm font-semibold mt-0.5">
-                      £{item.dessert.price.toFixed(2)}
+                      ₽{item.dessert.price.toFixed(2)}
                     </p>
 
                     {/* Quantity controls */}
@@ -118,7 +118,7 @@ export default function Cart() {
                       <button
                         onClick={() => updateQuantity(item.dessert.id, item.quantity - 1)}
                         className="w-6 h-6 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-rose-50 hover:border-rose-300 hover:text-rose-600 transition-all duration-200 cursor-pointer"
-                        aria-label={`Decrease quantity of ${item.dessert.name}`}
+                        aria-label={`Уменьшить количество ${item.dessert.name}`}
                       >
                         <Minus size={10} />
                       </button>
@@ -128,13 +128,13 @@ export default function Cart() {
                       <button
                         onClick={() => updateQuantity(item.dessert.id, item.quantity + 1)}
                         className="w-6 h-6 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-rose-50 hover:border-rose-300 hover:text-rose-600 transition-all duration-200 cursor-pointer"
-                        aria-label={`Increase quantity of ${item.dessert.name}`}
+                        aria-label={`Увеличить количество ${item.dessert.name}`}
                       >
                         <Plus size={10} />
                       </button>
 
                       <span className="font-['Inter'] text-xs text-stone-400 ml-auto">
-                        £{(item.dessert.price * item.quantity).toFixed(2)}
+                        ₽{(item.dessert.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
                   </div>
@@ -143,7 +143,7 @@ export default function Cart() {
                   <button
                     onClick={() => removeItem(item.dessert.id)}
                     className="p-1.5 text-stone-300 hover:text-red-400 transition-colors duration-200 flex-shrink-0 self-start cursor-pointer"
-                    aria-label={`Remove ${item.dessert.name} from cart`}
+                    aria-label={`Удалить ${item.dessert.name} из корзины`}
                   >
                     <Trash2 size={14} />
                   </button>
@@ -158,26 +158,26 @@ export default function Cart() {
           <div className="border-t border-stone-100 p-6 space-y-4">
             {/* Subtotal */}
             <div className="flex items-center justify-between">
-              <span className="font-['Inter'] text-stone-500 text-sm">Subtotal</span>
+              <span className="font-['Inter'] text-stone-500 text-sm">Сумма заказа</span>
               <span className="font-['Inter'] text-stone-800 text-sm font-medium">
-                £{totalPrice.toFixed(2)}
+                ₽{totalPrice.toFixed(2)}
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="font-['Inter'] text-stone-500 text-sm">Delivery</span>
+              <span className="font-['Inter'] text-stone-500 text-sm">Доставка</span>
               <span className="font-['Inter'] text-emerald-600 text-sm font-medium">
-                {totalPrice >= 30 ? 'Free' : '£4.95'}
+                {totalPrice >= 30 ? 'Бесплатно' : '₽4.95'}
               </span>
             </div>
             {totalPrice < 30 && (
               <p className="font-['Inter'] text-xs text-stone-400 bg-amber-50 rounded-lg px-3 py-2 border border-amber-100">
-                Add £{(30 - totalPrice).toFixed(2)} more for free delivery 🎁
+                Добавьте ₽{(30 - totalPrice).toFixed(2)} для бесплатной доставки 🎁
               </p>
             )}
             <div className="flex items-center justify-between border-t border-stone-100 pt-4">
-              <span className="font-['Playfair_Display'] text-stone-900 font-semibold">Total</span>
+              <span className="font-['Playfair_Display'] text-stone-900 font-semibold">Итого</span>
               <span className="font-['Playfair_Display'] text-rose-700 text-xl font-bold">
-                £{(totalPrice + (totalPrice >= 30 ? 0 : 4.95)).toFixed(2)}
+                ₽{(totalPrice + (totalPrice >= 30 ? 0 : 4.95)).toFixed(2)}
               </span>
             </div>
 
@@ -186,7 +186,7 @@ export default function Cart() {
               onClick={handleCheckout}
               className="w-full py-4 bg-rose-700 hover:bg-rose-800 text-white rounded-xl font-['Inter'] font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
             >
-              Proceed to Checkout
+              Оформить заказ
               <ArrowRight size={16} />
             </button>
 
@@ -195,7 +195,7 @@ export default function Cart() {
               onClick={clearCart}
               className="w-full py-2 text-stone-400 hover:text-red-500 font-['Inter'] text-xs transition-colors duration-200 cursor-pointer"
             >
-              Clear cart
+              Очистить корзину
             </button>
           </div>
         )}
