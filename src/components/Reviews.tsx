@@ -42,13 +42,13 @@ export default function Reviews() {
           }`}
         >
           <span className="inline-block font-['Dancing_Script'] text-rose-500 text-2xl mb-3">
-            Testimonials
+            Отзывы
           </span>
           <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-stone-900 mb-4">
-            What Our Guests Say
+            Что говорят наши гости
           </h2>
           <p className="font-['Inter'] text-stone-500 max-w-md mx-auto">
-            Real words from real people who have indulged in our creations.
+            Настоящие слова от настоящих людей, попробовавших наши творения.
           </p>
 
           {/* Overall rating */}
@@ -59,7 +59,7 @@ export default function Reviews() {
               ))}
             </div>
             <span className="font-['Playfair_Display'] text-2xl font-bold text-stone-900">4.9</span>
-            <span className="font-['Inter'] text-stone-500 text-sm">from 2,400+ reviews</span>
+            <span className="font-['Inter'] text-stone-500 text-sm">из 2 400+ отзывов</span>
           </div>
         </div>
 
@@ -119,7 +119,7 @@ export default function Reviews() {
           <button
             onClick={prev}
             className="w-11 h-11 rounded-full border-2 border-rose-200 text-rose-600 hover:bg-rose-600 hover:text-white hover:border-rose-600 transition-all duration-300 flex items-center justify-center cursor-pointer"
-            aria-label="Previous review"
+            aria-label="Предыдущий отзыв"
           >
             <ChevronLeft size={18} />
           </button>
@@ -134,7 +134,7 @@ export default function Reviews() {
                     ? 'w-6 h-2 bg-rose-600'
                     : 'w-2 h-2 bg-rose-200 hover:bg-rose-400'
                 }`}
-                aria-label={`Go to review ${i + 1}`}
+                aria-label={`Перейти к отзыву ${i + 1}`}
               />
             ))}
           </div>
@@ -142,7 +142,7 @@ export default function Reviews() {
           <button
             onClick={next}
             className="w-11 h-11 rounded-full border-2 border-rose-200 text-rose-600 hover:bg-rose-600 hover:text-white hover:border-rose-600 transition-all duration-300 flex items-center justify-center cursor-pointer"
-            aria-label="Next review"
+            aria-label="Следующий отзыв"
           >
             <ChevronRight size={18} />
           </button>
