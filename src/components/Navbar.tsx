@@ -13,7 +13,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Active section detection
+      // Определение активной секции
       const sections = navLinks.map((l) => l.href.slice(1));
       for (const id of sections.reverse()) {
         const el = document.getElementById(id);
@@ -46,7 +46,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+            {/* Логотип */}
             <button
               onClick={() => handleNavClick('#home')}
               className="flex flex-col leading-none cursor-pointer"
@@ -56,18 +56,18 @@ export default function Navbar() {
                   scrolled ? 'text-rose-800' : 'text-white'
                 }`}
               >
-                Unique
+                Уникальные
               </span>
               <span
                 className={`font-['Playfair_Display'] text-xs uppercase tracking-[0.3em] transition-colors duration-300 ${
                   scrolled ? 'text-rose-400' : 'text-rose-200'
                 }`}
               >
-                Desserts
+                Десерты
               </span>
             </button>
 
-            {/* Desktop Nav */}
+            {/* Десктопная навигация */}
             <ul className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -88,7 +88,7 @@ export default function Navbar() {
               ))}
             </ul>
 
-            {/* Right actions */}
+            {/* Правые действия */}
             <div className="flex items-center gap-3">
               <button
                 onClick={toggleCart}
@@ -97,7 +97,7 @@ export default function Navbar() {
                     ? 'text-stone-700 hover:bg-rose-50 hover:text-rose-700'
                     : 'text-white hover:bg-white/10'
                 }`}
-                aria-label="Open cart"
+                aria-label="Открыть корзину"
               >
                 <ShoppingBag size={22} />
                 {totalItems > 0 && (
@@ -115,16 +115,16 @@ export default function Navbar() {
                     : 'bg-white/15 backdrop-blur-sm text-white border border-white/30 hover:bg-white/25'
                 }`}
               >
-                Order Now
+                Заказать
               </button>
 
-              {/* Mobile menu toggle */}
+              {/* Кнопка мобильного меню */}
               <button
                 onClick={() => setMobileOpen((v) => !v)}
                 className={`md:hidden p-2 rounded-lg transition-colors duration-300 cursor-pointer ${
                   scrolled ? 'text-stone-700 hover:bg-rose-50' : 'text-white hover:bg-white/10'
                 }`}
-                aria-label="Toggle menu"
+                aria-label="Переключить меню"
               >
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
@@ -133,7 +133,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu overlay */}
+      {/* Мобильное меню */}
       <div
         className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
@@ -146,7 +146,7 @@ export default function Navbar() {
           }`}
         >
           <div className="flex items-center justify-between p-6 border-b border-rose-50">
-            <span className="font-['Dancing_Script'] text-2xl font-bold text-rose-800">Unique Desserts</span>
+            <span className="font-['Dancing_Script'] text-2xl font-bold text-rose-800">Уникальные десерты</span>
             <button onClick={() => setMobileOpen(false)} className="p-2 text-stone-500 hover:text-rose-700 cursor-pointer">
               <X size={20} />
             </button>
@@ -172,7 +172,7 @@ export default function Navbar() {
               onClick={() => handleNavClick('#contact')}
               className="w-full py-3 bg-rose-700 text-white rounded-full font-semibold font-['Inter'] hover:bg-rose-800 transition-colors cursor-pointer"
             >
-              Order Now
+              Заказать
             </button>
           </div>
         </div>
