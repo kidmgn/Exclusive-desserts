@@ -6,6 +6,7 @@ export interface Dessert {
   category: DessertCategory;
   image: string;
   badge?: string;
+  badgeColor?: string;
   rating: number;
   isNew?: boolean;
   isBestseller?: boolean;
