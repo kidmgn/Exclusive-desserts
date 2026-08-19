@@ -1,4 +1,5 @@
-import { createContext, useContext, useReducer, useCallback, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useReducer, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import type { CartItem, Dessert } from '../types';
 
 interface CartState {
@@ -26,6 +27,34 @@ interface CartContextValue extends CartState {
 }
 
 const CartContext = createContext<CartContextValue | null>(null);
+
+// Загрузка начального состояния корзины из localStorage
+const loadCartFromStorage = (): CartItem[] => {
+  try {
+    const saved = localStorage.getItem('cartItems');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed)) {
+        return parsed.filter(
+          (item) =>
+            item &&
+            typeof item === 'object' &&
+            item.dessert &&
+            typeof item.dessert.id === 'number' &&
+            typeof item.quantity === 'number'
+        );
+      }
+    }
+  } catch (e) {
+    console.warn('Не удалось прочитать корзину из localStorage', e);
+  }
+  return [];
+};
+
+const initialState: CartState = {
+  items: loadCartFromStorage(),
+  isOpen: false,
+};
 
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
@@ -78,7 +107,16 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(cartReducer, { items: [], isOpen: false });
+  const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  // Сохранение корзины в localStorage при изменении items
+  useEffect(() => {
+    try {
+      localStorage.setItem('cartItems', JSON.stringify(state.items));
+    } catch (e) {
+      console.warn('Не удалось сохранить корзину в localStorage', e);
+    }
+  }, [state.items]);
 
   const addItem = useCallback((dessert: Dessert) => {
     dispatch({ type: 'ADD_ITEM', payload: dessert });
