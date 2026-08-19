@@ -1,5 +1,6 @@
 import { Toaster } from 'react-hot-toast';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,34 +14,36 @@ import Cart from './components/Cart';
 
 export default function App() {
   return (
-    <CartProvider>
-      <div className="min-h-screen overflow-x-hidden">
-        {/* Toast notifications */}
-        <Toaster
-          position="bottom-right"
-          toastOptions={{ duration: 3000 }}
-        />
+    <AuthProvider>
+      <CartProvider>
+        <div className="min-h-screen overflow-x-hidden">
+          {/* Toast notifications */}
+          <Toaster
+            position="bottom-right"
+            toastOptions={{ duration: 3000 }}
+          />
 
-        {/* Navigation */}
-        <Navbar />
+          {/* Navigation */}
+          <Navbar />
 
-        {/* Cart Drawer */}
-        <Cart />
+          {/* Cart Drawer */}
+          <Cart />
 
-        {/* Page sections */}
-        <main>
-          <Hero />
-          <About />
-          <Menu />
-          <SeasonalBanner />
-          <Gallery />
-          <Reviews />
-          <Contact />
-        </main>
+          {/* Page sections */}
+          <main>
+            <Hero />
+            <About />
+            <Menu />
+            <SeasonalBanner />
+            <Gallery />
+            <Reviews />
+            <Contact />
+          </main>
 
-        {/* Footer */}
-        <Footer />
-      </div>
-    </CartProvider>
+          {/* Footer */}
+          <Footer />
+        </div>
+      </CartProvider>
+    </AuthProvider>
   );
 }
