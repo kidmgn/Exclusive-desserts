@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X } from 'lucide-react';
+import { ShoppingBag, Menu, X, LogIn, LogOut } from 'lucide-react';
 import { navLinks } from '../data';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
+import LoginModal from './LoginModal';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [loginOpen, setLoginOpen] = useState(false);
   const { toggleCart, totalItems } = useCart();
+  const { isAdmin, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,6 +94,33 @@ export default function Navbar() {
 
             {/* Правые действия */}
             <div className="flex items-center gap-3">
+              {/* Кнопка входа/выхода */}
+              {isAdmin ? (
+                <button
+                  onClick={logout}
+                  className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold font-['Inter'] transition-all duration-300 cursor-pointer ${
+                    scrolled
+                      ? 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                      : 'bg-white/15 backdrop-blur-sm text-white border border-white/30 hover:bg-white/25'
+                  }`}
+                >
+                  <LogOut size={16} />
+                  Выйти
+                </button>
+              ) : (
+                <button
+                  onClick={() => setLoginOpen(true)}
+                  className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold font-['Inter'] transition-all duration-300 cursor-pointer ${
+                    scrolled
+                      ? 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                      : 'bg-white/15 backdrop-blur-sm text-white border border-white/30 hover:bg-white/25'
+                  }`}
+                >
+                  <LogIn size={16} />
+                  Войти
+                </button>
+              )}
+
               <button
                 onClick={toggleCart}
                 className={`relative p-2.5 rounded-full transition-all duration-300 cursor-pointer ${
@@ -166,6 +197,30 @@ export default function Navbar() {
                 </button>
               </li>
             ))}
+            {/* Мобильные кнопки входа/выхода */}
+            <li className="mt-2 border-t border-rose-50 pt-2">
+              {isAdmin ? (
+                <button
+                  onClick={() => {
+                    logout();
+                    setMobileOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-3 rounded-xl font-['Inter'] text-sm font-medium text-stone-700 hover:bg-rose-50 hover:text-rose-700 cursor-pointer"
+                >
+                  Выйти
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setLoginOpen(true);
+                    setMobileOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-3 rounded-xl font-['Inter'] text-sm font-medium text-stone-700 hover:bg-rose-50 hover:text-rose-700 cursor-pointer"
+                >
+                  Войти
+                </button>
+              )}
+            </li>
           </ul>
           <div className="mt-auto p-6 border-t border-rose-50">
             <button
@@ -177,6 +232,9 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Модалка входа */}
+      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
     </>
   );
 }
